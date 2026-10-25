@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layers: bg_blur (blurred wallpaper, optional) under bg_tint (surface color, alpha = solidity), then content. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_shape"
+    android:clipToOutline="true">
+
+    <ImageView
+        android:id="@+id/bg_blur"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:importantForAccessibility="no"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/bg_tint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/widget_fill"
+        android:tint="@color/widget_surface"
+        android:importantForAccessibility="no" />
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1.5"
+                android:orientation="vertical" android:gravity="center_vertical">
+                <TextClock android:id="@+id/time" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+            android:format12Hour="h:mm" android:format24Hour="HH:mm" android:gravity="start|center_vertical" android:maxLines="1"
+            android:includeFontPadding="false" android:fontFamily="sans-serif-medium" android:textColor="@color/widget_on_surface" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="12sp" android:autoSizeMaxTextSize="160sp" android:autoSizeStepGranularity="1sp" />
+                <TextClock android:id="@+id/date" android:layout_width="match_parent" android:layout_height="wrap_content" 
+            android:format12Hour="EEEE, d MMMM" android:format24Hour="EEEE, d MMMM" android:gravity="start" android:maxLines="1"
+            android:includeFontPadding="false" android:fontFamily="sans-serif-medium" android:textColor="@color/widget_primary" android:textSize="14sp" />
+            </LinearLayout>
+            <FrameLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                android:layout_marginStart="10dp">
+                <ImageView android:id="@+id/pill_bg" android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:scaleType="fitXY" android:src="@drawable/widget_tile" android:tint="@color/widget_primary_container"
+                    android:importantForAccessibility="no" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <ImageView android:id="@+id/icon" android:layout_width="36dp" android:layout_height="36dp"
+            android:scaleType="fitCenter" android:tint="@color/widget_on_primary_container" android:importantForAccessibility="no" />
+                    <TextView android:id="@+id/temp" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="--°" android:textColor="@color/widget_on_primary_container" android:textSize="28sp" android:fontFamily="sans-serif-medium"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/condition" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="" android:textColor="@color/widget_on_primary_container" android:textSize="12sp" android:fontFamily="sans-serif"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

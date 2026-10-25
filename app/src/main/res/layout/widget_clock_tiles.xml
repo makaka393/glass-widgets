@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layers: bg_blur (blurred wallpaper, optional) under bg_tint (surface color, alpha = solidity), then content. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_shape"
+    android:clipToOutline="true">
+
+    <ImageView
+        android:id="@+id/bg_blur"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:importantForAccessibility="no"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/bg_tint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/widget_fill"
+        android:tint="@color/widget_surface"
+        android:importantForAccessibility="no" />
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+                android:orientation="horizontal">
+                <FrameLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginEnd="5dp">
+                    <ImageView android:id="@+id/tile_bg1" android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:scaleType="fitXY" android:src="@drawable/widget_tile" android:tint="@color/widget_primary_container" android:importantForAccessibility="no" />
+                    <TextClock android:id="@+id/tile1" android:layout_width="match_parent" android:layout_height="match_parent" 
+            android:format12Hour="hh" android:format24Hour="HH" android:gravity="center" android:maxLines="1"
+            android:includeFontPadding="false" android:fontFamily="sans-serif-condensed" android:textColor="@color/widget_on_primary_container" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="12sp" android:autoSizeMaxTextSize="160sp" android:autoSizeStepGranularity="1sp" android:textStyle="bold" android:padding="8dp"/>
+                </FrameLayout>
+                <FrameLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginStart="5dp">
+                    <ImageView android:id="@+id/tile_bg2" android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:scaleType="fitXY" android:src="@drawable/widget_tile" android:tint="@color/widget_tertiary_container" android:importantForAccessibility="no" />
+                    <TextClock android:id="@+id/tile2" android:layout_width="match_parent" android:layout_height="match_parent" 
+            android:format12Hour="mm" android:format24Hour="mm" android:gravity="center" android:maxLines="1"
+            android:includeFontPadding="false" android:fontFamily="sans-serif-condensed" android:textColor="@color/widget_on_tertiary_container" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="12sp" android:autoSizeMaxTextSize="160sp" android:autoSizeStepGranularity="1sp" android:textStyle="bold" android:padding="8dp"/>
+                </FrameLayout>
+            </LinearLayout>
+            <TextClock android:id="@+id/date" android:layout_width="match_parent" android:layout_height="wrap_content" 
+            android:format12Hour="EEEE, d MMMM" android:format24Hour="EEEE, d MMMM" android:gravity="center" android:maxLines="1"
+            android:includeFontPadding="false" android:fontFamily="sans-serif-medium" android:textColor="@color/widget_on_surface_variant" android:textSize="14sp" android:layout_marginTop="10dp"/>
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layers: bg_blur (blurred wallpaper, optional) under bg_tint (surface color, alpha = solidity), then content. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_shape"
+    android:clipToOutline="true">
+
+    <ImageView
+        android:id="@+id/bg_blur"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:importantForAccessibility="no"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/bg_tint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/widget_fill"
+        android:tint="@color/widget_surface"
+        android:importantForAccessibility="no" />
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="horizontal">
+            <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1.1"
+                android:orientation="vertical" android:gravity="center_vertical">
+                <ImageView android:id="@+id/icon" android:layout_width="40dp" android:layout_height="40dp"
+            android:scaleType="fitCenter" android:tint="@color/widget_primary" android:importantForAccessibility="no" />
+                <TextView android:id="@+id/temp" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="--°" android:textColor="@color/widget_on_surface" android:textSize="40sp" android:fontFamily="sans-serif-light"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" android:layout_marginTop="6dp"/>
+                <TextView android:id="@+id/condition" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="Weather" android:textColor="@color/widget_on_surface" android:textSize="14sp" android:fontFamily="sans-serif-medium"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" android:layout_marginTop="4dp"/>
+                <TextView android:id="@+id/details" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="Tap to set up" android:textColor="@color/widget_on_surface_variant" android:textSize="12sp" android:fontFamily="sans-serif"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" android:layout_marginTop="2dp"/>
+            </LinearLayout>
+            <FrameLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1.9"
+                android:layout_marginStart="8dp">
+                <ImageView android:id="@+id/days_bg" android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:scaleType="fitXY" android:src="@drawable/widget_tile" android:tint="@color/widget_primary_container"
+                    android:alpha="0.55" android:importantForAccessibility="no" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:orientation="horizontal" android:padding="6dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/d0_name" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="—" android:textColor="@color/widget_on_surface_variant" android:textSize="12sp" android:fontFamily="sans-serif-medium"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" />
+                    <ImageView android:id="@+id/d0_icon" android:layout_width="26dp" android:layout_height="26dp"
+            android:scaleType="fitCenter" android:tint="@color/widget_primary" android:importantForAccessibility="no" android:layout_marginTop="6dp" android:layout_marginBottom="6dp"/>
+                    <TextView android:id="@+id/d0_max" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="" android:textColor="@color/widget_on_surface" android:textSize="14sp" android:fontFamily="sans-serif-medium"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" />
+                    <TextView android:id="@+id/d0_min" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="" android:textColor="@color/widget_on_surface_variant" android:textSize="12sp" android:fontFamily="sans-serif"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" android:layout_marginTop="2dp"/>
+                </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/d1_name" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="—" android:textColor="@color/widget_on_surface_variant" android:textSize="12sp" android:fontFamily="sans-serif-medium"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" />
+                    <ImageView android:id="@+id/d1_icon" android:layout_width="26dp" android:layout_height="26dp"
+            android:scaleType="fitCenter" android:tint="@color/widget_primary" android:importantForAccessibility="no" android:layout_marginTop="6dp" android:layout_marginBottom="6dp"/>
+                    <TextView android:id="@+id/d1_max" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="" android:textColor="@color/widget_on_surface" android:textSize="14sp" android:fontFamily="sans-serif-medium"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" />
+                    <TextView android:id="@+id/d1_min" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="" android:textColor="@color/widget_on_surface_variant" android:textSize="12sp" android:fontFamily="sans-serif"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" android:layout_marginTop="2dp"/>
+                </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/d2_name" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="—" android:textColor="@color/widget_on_surface_variant" android:textSize="12sp" android:fontFamily="sans-serif-medium"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" />
+                    <ImageView android:id="@+id/d2_icon" android:layout_width="26dp" android:layout_height="26dp"
+            android:scaleType="fitCenter" android:tint="@color/widget_primary" android:importantForAccessibility="no" android:layout_marginTop="6dp" android:layout_marginBottom="6dp"/>
+                    <TextView android:id="@+id/d2_max" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="" android:textColor="@color/widget_on_surface" android:textSize="14sp" android:fontFamily="sans-serif-medium"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" />
+                    <TextView android:id="@+id/d2_min" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="" android:textColor="@color/widget_on_surface_variant" android:textSize="12sp" android:fontFamily="sans-serif"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" android:layout_marginTop="2dp"/>
+                </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/d3_name" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="—" android:textColor="@color/widget_on_surface_variant" android:textSize="12sp" android:fontFamily="sans-serif-medium"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" />
+                    <ImageView android:id="@+id/d3_icon" android:layout_width="26dp" android:layout_height="26dp"
+            android:scaleType="fitCenter" android:tint="@color/widget_primary" android:importantForAccessibility="no" android:layout_marginTop="6dp" android:layout_marginBottom="6dp"/>
+                    <TextView android:id="@+id/d3_max" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="" android:textColor="@color/widget_on_surface" android:textSize="14sp" android:fontFamily="sans-serif-medium"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" />
+                    <TextView android:id="@+id/d3_min" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+            android:text="" android:textColor="@color/widget_on_surface_variant" android:textSize="12sp" android:fontFamily="sans-serif"
+            android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" android:gravity="center" android:layout_marginTop="2dp"/>
+                </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>
