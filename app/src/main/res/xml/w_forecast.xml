@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/widget_bitmap"
+    android:previewLayout="@layout/preview_forecast"
+    android:description="@string/w_forecast_desc"
+    android:minWidth="266dp"
+    android:minHeight="118dp"
+    android:minResizeWidth="192dp"
+    android:minResizeHeight="118dp"
+    android:targetCellWidth="4"
+    android:targetCellHeight="2"
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen"
+    android:updatePeriodMillis="1800000"
+    android:configure="app.glasswidgets.ui.ConfigureActivity"
+    android:widgetFeatures="reconfigurable|configuration_optional" />

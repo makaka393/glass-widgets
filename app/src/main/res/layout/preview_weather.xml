@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shown in the launcher's widget list: a frosted card with the widget's icon and name. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/preview_card"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="12dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/material_symbols_rounded"
+        android:fontFeatureSettings="liga"
+        android:text="partly_cloudy_day"
+        android:textColor="#FFEADDFF"
+        android:textSize="40sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/google_sans_flex"
+        android:text="@string/w_weather"
+        android:textColor="#FFE6E0E9"
+        android:textSize="15sp" />
+</LinearLayout>

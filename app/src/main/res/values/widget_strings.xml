@@ -1,21 +1,17 @@
 <resources>
   <string name="app_name">Glass Widgets</string>
-  <string name="widget_clock_stack_label">Clock · Stack</string>
-  <string name="widget_clock_stack_desc">Big hours over minutes</string>
-  <string name="widget_clock_thin_label">Clock · Thin</string>
-  <string name="widget_clock_thin_desc">Light time with the date</string>
-  <string name="widget_clock_pill_label">Clock · Pill</string>
-  <string name="widget_clock_pill_desc">Time pill with weekday and date</string>
-  <string name="widget_clock_analog_label">Clock · Analog</string>
-  <string name="widget_clock_analog_desc">Material You dial</string>
-  <string name="widget_clock_tiles_label">Clock · Tiles</string>
-  <string name="widget_clock_tiles_desc">Hours and minutes in tonal tiles</string>
-  <string name="widget_clock_date_label">Date</string>
-  <string name="widget_clock_date_desc">Calendar page with the time</string>
-  <string name="widget_weather_label">Weather</string>
-  <string name="widget_weather_desc">Current weather</string>
-  <string name="widget_weather_forecast_label">Weather · Forecast</string>
-  <string name="widget_weather_forecast_desc">Now and the next 4 days</string>
-  <string name="widget_clock_weather_label">Clock · Weather</string>
-  <string name="widget_clock_weather_desc">Time, date and weather</string>
+  <string name="w_clock">Clock</string>
+  <string name="w_clock_desc">Any of 7 faces: shapes, analog, orbit, dots, planets, horizon, segments</string>
+  <string name="w_glance">At a glance</string>
+  <string name="w_glance_desc">Date, weather, sunrise and sunset</string>
+  <string name="w_calendar">Calendar</string>
+  <string name="w_calendar_desc">Today or the month as a grid</string>
+  <string name="w_progress">Day &amp; year</string>
+  <string name="w_progress_desc">The day, month or year as dots</string>
+  <string name="w_weather">Weather</string>
+  <string name="w_weather_desc">Now, hourly and daily</string>
+  <string name="w_forecast">Forecast</string>
+  <string name="w_forecast_desc">Temperature curve and the week</string>
+  <string name="w_sun">Sun</string>
+  <string name="w_sun_desc">The day arc, sunrise and sunset</string>
 </resources>

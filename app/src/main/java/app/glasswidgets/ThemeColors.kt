@@ -81,6 +81,8 @@ internal object ThemeColors {
     /** Scheme for the current appearance (settings screen). */
     fun resolve(context: Context): M3Scheme = isDark(context).let { M3Scheme(roles(context, it), it) }
 
+    fun scheme(context: Context, dark: Boolean): M3Scheme = M3Scheme(roles(context, dark), dark)
+
     /**
      * Light and dark schemes for widgets, plus whether they should follow the launcher's
      * night mode (theme "Auto") or stay on one appearance.

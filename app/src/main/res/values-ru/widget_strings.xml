@@ -1,0 +1,16 @@
+<resources>
+  <string name="w_clock">Часы</string>
+  <string name="w_clock_desc">Любой из 7 циферблатов: формы, стрелки, орбита, точки, планеты, горизонт, сегменты</string>
+  <string name="w_glance">Коротко о главном</string>
+  <string name="w_glance_desc">Дата, погода, восход и закат</string>
+  <string name="w_calendar">Календарь</string>
+  <string name="w_calendar_desc">Сегодня или месяц сеткой</string>
+  <string name="w_progress">День и год</string>
+  <string name="w_progress_desc">День, месяц или год точками</string>
+  <string name="w_weather">Погода</string>
+  <string name="w_weather_desc">Сейчас, по часам и по дням</string>
+  <string name="w_forecast">Прогноз</string>
+  <string name="w_forecast_desc">Кривая температуры и неделя</string>
+  <string name="w_sun">Солнце</string>
+  <string name="w_sun_desc">Дуга дня, восход и закат</string>
+</resources>

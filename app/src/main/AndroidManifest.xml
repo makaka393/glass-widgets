@@ -3,11 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- Weather for the approximate location. -->
+    <!-- Weather and sunrise/sunset for the approximate location. -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!-- Reading the wallpaper for the imitated blur behind widgets. -->
+    <!-- Reading the wallpaper to blur it behind widgets. -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="29" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
+    <!-- Clocks are redrawn on the minute (non-wake-up alarm: only while the screen is on). -->
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="false"
@@ -18,7 +22,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:launchMode="singleTask">
             <intent-filter>
@@ -27,11 +31,10 @@
             </intent-filter>
         </activity>
 
+        <!-- "Customize" a widget (on add, and from the launcher's long-press menu). -->
         <activity
-            android:name=".widgets.WidgetActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:name=".ui.ConfigureActivity"
             android:excludeFromRecents="true"
-            android:noHistory="true"
             android:taskAffinity=""
             android:exported="true">
             <intent-filter>
@@ -39,59 +42,67 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".widgets.ClockStackWidget" android:label="@string/widget_clock_stack_label" android:exported="true">
+        <activity
+            android:name=".ui.TapActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:taskAffinity=""
+            android:exported="false" />
+
+        <receiver android:name=".engine.TickReceiver" android:exported="false" />
+        <receiver android:name=".ui.PinReceiver" android:exported="false" />
+        <receiver android:name=".engine.SystemReceiver" android:exported="true">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info_clock_stack" />
         </receiver>
-        <receiver android:name=".widgets.ClockThinWidget" android:label="@string/widget_clock_thin_label" android:exported="true">
+
+        <receiver android:name=".engine.ClockWidget" android:label="@string/w_clock" android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info_clock_thin" />
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/w_clock" />
         </receiver>
-        <receiver android:name=".widgets.ClockPillWidget" android:label="@string/widget_clock_pill_label" android:exported="true">
+        <receiver android:name=".engine.GlanceWidget" android:label="@string/w_glance" android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info_clock_pill" />
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/w_glance" />
         </receiver>
-        <receiver android:name=".widgets.ClockAnalogWidget" android:label="@string/widget_clock_analog_label" android:exported="true">
+        <receiver android:name=".engine.CalendarWidget" android:label="@string/w_calendar" android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info_clock_analog" />
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/w_calendar" />
         </receiver>
-        <receiver android:name=".widgets.ClockTilesWidget" android:label="@string/widget_clock_tiles_label" android:exported="true">
+        <receiver android:name=".engine.ProgressWidget" android:label="@string/w_progress" android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info_clock_tiles" />
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/w_progress" />
         </receiver>
-        <receiver android:name=".widgets.ClockDateWidget" android:label="@string/widget_clock_date_label" android:exported="true">
+        <receiver android:name=".engine.WeatherWidget" android:label="@string/w_weather" android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info_clock_date" />
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/w_weather" />
         </receiver>
-        <receiver android:name=".widgets.WeatherWidget" android:label="@string/widget_weather_label" android:exported="true">
+        <receiver android:name=".engine.ForecastWidget" android:label="@string/w_forecast" android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info_weather" />
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/w_forecast" />
         </receiver>
-        <receiver android:name=".widgets.WeatherForecastWidget" android:label="@string/widget_weather_forecast_label" android:exported="true">
+        <receiver android:name=".engine.SunWidget" android:label="@string/w_sun" android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info_weather_forecast" />
-        </receiver>
-        <receiver android:name=".widgets.ClockWeatherWidget" android:label="@string/widget_clock_weather_label" android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info_clock_weather" />
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/w_sun" />
         </receiver>
     </application>
 </manifest>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/widget_bitmap"
+    android:previewLayout="@layout/preview_progress"
+    android:description="@string/w_progress_desc"
+    android:minWidth="118dp"
+    android:minHeight="118dp"
+    android:minResizeWidth="118dp"
+    android:minResizeHeight="118dp"
+    android:targetCellWidth="2"
+    android:targetCellHeight="2"
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen"
+    android:updatePeriodMillis="0"
+    android:configure="app.glasswidgets.ui.ConfigureActivity"
+    android:widgetFeatures="reconfigurable|configuration_optional" />
